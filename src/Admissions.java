@@ -132,49 +132,25 @@ public class Admissions {
     public void editStudentInfoById(int id) {
         int search = searchStudentByIdUseBinarySearch(id);
         if (search != -1) {
-            editStudentInfo(search);
+            Student studentSearch = studentList.get(search);
+            if (studentSearch instanceof StudentBranchA) {
+                StudentBranchA studentBranchA = new StudentBranchA();
+                studentBranchA.inputStudentBranchAInfo();
+                studentList.set(search, studentBranchA);
+            }
+            if (studentSearch instanceof StudentBranchB) {
+                StudentBranchB studentBranchB = new StudentBranchB();
+                studentBranchB.inputStudentBranchBInfo();
+                studentList.set(search, studentBranchB);
+            }
+            if (studentSearch instanceof StudentBranchC) {
+                StudentBranchC studentBranchC = new StudentBranchC();
+                studentBranchC.inputStudentBranchCInfo();
+                studentList.set(search, studentBranchC);
+            }
         }
     }
 
-    // Sua diem
-    private void editStudentInfo(int mid) {
-        editIdNameAddressPrioritizeType(mid);
-        if (studentList.get(mid) instanceof StudentBranchA) {
-            System.out.print("Sửa điểm Toán : ");
-            ((StudentBranchA) studentList.get(mid)).setMathScore(sc.nextDouble());
-            System.out.print("Sửa điểm Vật lý : ");
-            ((StudentBranchA) studentList.get(mid)).setPhysicalScore(sc.nextDouble());
-            System.out.print("Sửa điểm Hóa học : ");
-            ((StudentBranchA) studentList.get(mid)).setChemicalScore(sc.nextDouble());
-        } else if (studentList.get(mid) instanceof StudentBranchB) {
-            System.out.print("Sửa điểm Toán : ");
-            ((StudentBranchB) studentList.get(mid)).setMathScore(sc.nextDouble());
-            System.out.print("Sửa điểm Hóa học : ");
-            ((StudentBranchB) studentList.get(mid)).setChemicalScore(sc.nextDouble());
-            System.out.print("Sửa điểm Sinh học : ");
-            ((StudentBranchB) studentList.get(mid)).setBiologicalScore(sc.nextDouble());
-        } else if (studentList.get(mid) instanceof StudentBranchC) {
-            System.out.print("Sửa điểm Ngữ văn : ");
-            ((StudentBranchC) studentList.get(mid)).setLiteraryScore(sc.nextDouble());
-            System.out.print("Sửa điểm Lịch sử : ");
-            ((StudentBranchC) studentList.get(mid)).setHistoryScore(sc.nextDouble());
-            System.out.print("Sửa điểm Địa lý : ");
-            ((StudentBranchC) studentList.get(mid)).setGeographyScore(sc.nextDouble());
-        }
-    }
-
-    // Sua SBD, ten, dia chi, dang khu vuc uu tien
-    private void editIdNameAddressPrioritizeType(int mid) {
-        System.out.print("Sửa id : ");
-        studentList.get(mid).setId(sc.nextInt());
-        sc.nextLine();
-        System.out.print("Sửa tên : ");
-        studentList.get(mid).setName(sc.nextLine());
-        System.out.print("Sửa địa chỉ : ");
-        studentList.get(mid).setAddress(sc.nextLine());
-        System.out.print("Sửa diện khu vực ưu tiên : ");
-        studentList.get(mid).setPrioritizeType(sc.nextLine());
-    }
 
     // Xóa thông tin một thí sinh khi biết số báo danh
     public void removeStudentById(int id) {
