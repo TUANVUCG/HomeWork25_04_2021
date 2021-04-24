@@ -12,6 +12,7 @@ public class Admissions {
         int choice = sc.nextInt();
         switch (choice) {
             case 1: {
+                boolean k = true;
                 StudentBranchA studentBranchA = new StudentBranchA();
                 studentBranchA.inputStudentBranchAInfo();
                 studentList.add(studentBranchA);
@@ -96,17 +97,14 @@ public class Admissions {
     }
 
     // Tim kiem theo so bao danh su dung thuat toan tim kiem nhi phan
-    public void searchStudentByIdUseBinarySearch(int id){
+    public int searchStudentByIdUseBinarySearch(int id){
         sortStudentById();
         int left = 0;
         int right = studentList.size()-1;
-        boolean k = false;
         do{
             int mid = (left+right)/2;
             if(studentList.get(mid).getId()==id){
-                System.out.println(studentList.get(mid));
-                k = true;
-                return;
+                return mid;
             }
             if(studentList.get(mid).getId()<id){
                 left=mid+1;
@@ -116,33 +114,25 @@ public class Admissions {
             }
         }while(left<=right);
         System.out.println(KHONG_TIM_THAY_SO_BAO_DANH);
+        return -1;
     }
 
-    // Chỉnh sửa thông tin khi biết số báo danh
+    // Hien thi thong tin theo so bao danh
+    public void showStudentInfoById(int id){
+        if(searchStudentByIdUseBinarySearch(id)!=-1){
+            System.out.println(studentList.get(searchStudentByIdUseBinarySearch(id)));
+        }
+    }
+
+    // Sửa thông tin khi biết số báo danh
     public void editStudentInfoById(int id){
-        sortStudentById();
-        int left = 0;
-        int right = studentList.size()-1;
-        boolean k = false;
-        do{
-            int mid = (left+right)/2;
-            if(studentList.get(mid).getId()==id){
-                editStudentScore(mid);
-                k = true;
-                return;
-            }
-            if(studentList.get(mid).getId()<id){
-                left=mid+1;
-            }
-            if(studentList.get(mid).getId()>id){
-                right=mid-1;
-            }
-        }while(left<=right);
-        System.out.println(KHONG_TIM_THAY_SO_BAO_DANH);
+        if(searchStudentByIdUseBinarySearch(id)!=-1){
+           editStudentInfo(searchStudentByIdUseBinarySearch(id));
+        }
     }
 
     // Sua diem
-    private void editStudentScore(int mid) {
+    private void editStudentInfo(int mid) {
         editIdNameAddressPrioritizeType(mid);
         if(studentList.get(mid) instanceof StudentBranchA) {
             System.out.print("Sửa điểm Toán : ");
@@ -168,7 +158,6 @@ public class Admissions {
         }
     }
 
-
     // Sua SBD, ten, dia chi, dang khu vuc uu tien
     private void editIdNameAddressPrioritizeType(int mid) {
         System.out.print("Sửa id : ");
@@ -184,24 +173,10 @@ public class Admissions {
 
     // Xóa thông tin một thí sinh khi biết số báo danh
     public void removeStudentById(int id){
-        sortStudentById();
-        int left = 0;
-        int right = studentList.size();
-        boolean k = false;
-        do{
-            int mid = (left+right)/2;
-            if(studentList.get(mid).getId()==id){
-                studentList.remove(mid);
-                k = true;
-                return;
-            }
-            if(studentList.get(mid).getId()<id){
-                left = mid +1;
-            }
-            if(studentList.get(mid).getId()>id){
-                right= mid-1;
-            }
-        }while(left<=right);
-        System.out.println(KHONG_TIM_THAY_SO_BAO_DANH);
+        if(searchStudentByIdUseBinarySearch(id)!=-1){
+            studentList.remove(studentList.get(searchStudentByIdUseBinarySearch(id)));
+        }
     }
+
+
 }
