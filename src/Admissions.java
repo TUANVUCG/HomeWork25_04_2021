@@ -104,14 +104,14 @@ public class Admissions {
         do{
             int mid = (left+right)/2;
             if(studentList.get(mid).getId()==id){
-                k = true;
                 System.out.println(studentList.get(mid));
+                k = true;
                 return;
             }
-            if(studentList.get(mid).getId()>id){
+            if(studentList.get(mid).getId()<id){
                 left=mid+1;
             }
-            if(studentList.get(mid).getId()<id){
+            if(studentList.get(mid).getId()>id){
                 right=mid-1;
             }
         }while(left<=right);
@@ -131,10 +131,10 @@ public class Admissions {
                 k = true;
                 return;
             }
-            if(studentList.get(mid).getId()>id){
+            if(studentList.get(mid).getId()<id){
                 left=mid+1;
             }
-            if(studentList.get(mid).getId()<id){
+            if(studentList.get(mid).getId()>id){
                 right=mid-1;
             }
         }while(left<=right);
@@ -142,7 +142,7 @@ public class Admissions {
     }
 
     private void editStudentScore(int mid) {
-        editIdNameAddress(mid);
+        editIdNameAddressPrioritizeType(mid);
         if(studentList.get(mid) instanceof StudentBranchA) {
             System.out.print("Sửa điểm Toán : ");
             ((StudentBranchA) studentList.get(mid)).setMathScore(sc.nextDouble());
@@ -167,14 +167,16 @@ public class Admissions {
         }
     }
 
-    private void editIdNameAddress(int mid) {
+    private void editIdNameAddressPrioritizeType(int mid) {
         System.out.print("Sửa id : ");
         studentList.get(mid).setId(sc.nextInt());
         sc.nextLine();
         System.out.print("Sửa tên : ");
-        studentList.get(mid).setAddress(sc.nextLine());
+        studentList.get(mid).setName(sc.nextLine());
         System.out.print("Sửa địa chỉ : ");
         studentList.get(mid).setAddress(sc.nextLine());
+        System.out.print("Sửa diện khu vực ưu tiên : ");
+        studentList.get(mid).setPrioritizeType(sc.nextLine());
     }
 
     // Xóa thông tin một thí sinh khi biết số báo danh
@@ -190,10 +192,10 @@ public class Admissions {
                 k = true;
                 return;
             }
-            if(studentList.get(mid).getId()>id){
+            if(studentList.get(mid).getId()<id){
                 left = mid +1;
             }
-            if(studentList.get(mid).getId()<id){
+            if(studentList.get(mid).getId()>id){
                 right= mid-1;
             }
         }while(left<=right);

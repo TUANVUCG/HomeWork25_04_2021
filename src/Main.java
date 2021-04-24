@@ -11,6 +11,8 @@ public class Main {
         admissions.studentList.add(new StudentBranchB(4,"Aasuke", "Ha Noi","kv2", 7,6.5,8));
         admissions.studentList.add(new StudentBranchC(2,"Kakura", "Bac Kan","kv3", 8,9,8.5));
         admissions.studentList.add(new StudentBranchA(5,"Lee", "Ha Tinh","kv2", 6,8,9));
+        admissions.sortStudentById();
+        admissions.showInfoAllStudent();
         Scanner sc = new Scanner(System.in);
         System.out.println("Nhập lựa chọn của bạn");
         int choice = -1;
@@ -65,12 +67,16 @@ public class Main {
     private static void removeById(String NHAP_SBD, Admissions admissions, Scanner sc) {
         int id = inputId(NHAP_SBD, sc);
         admissions.removeStudentById(id);
+        System.out.println("Danh sách thí sinh sau khi xóa ");
+        admissions.showInfoAllStudent();
         return;
     }
 
     private static void editById(String NHAP_SBD, Admissions admissions, Scanner sc) {
         int id = inputId(NHAP_SBD, sc);
         admissions.editStudentInfoById(id);
+        System.out.println("Danh sách thí sinh sau khi sửa ");
+        admissions.showInfoAllStudent();
         return;
     }
 
