@@ -141,6 +141,7 @@ public class Admissions {
         System.out.println(KHONG_TIM_THAY_SO_BAO_DANH);
     }
 
+    // Sua diem
     private void editStudentScore(int mid) {
         editIdNameAddressPrioritizeType(mid);
         if(studentList.get(mid) instanceof StudentBranchA) {
@@ -167,6 +168,8 @@ public class Admissions {
         }
     }
 
+
+    // Sua SBD, ten, dia chi, dang khu vuc uu tien
     private void editIdNameAddressPrioritizeType(int mid) {
         System.out.print("Sửa id : ");
         studentList.get(mid).setId(sc.nextInt());
