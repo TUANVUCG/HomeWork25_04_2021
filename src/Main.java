@@ -82,7 +82,6 @@ public class Main {
         admissions.showInfoAllStudent();
     }
 
-
     private static void menu() {
         System.out.println("1. Nhập thông tin thí sinh");
         System.out.println("2. Hiển thị thông tin tất cả thí sinh");
