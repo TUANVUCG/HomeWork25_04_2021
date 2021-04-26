@@ -43,6 +43,13 @@ public class Main {
                     removeStudentById(admissions, sc);
                     break;
                 }
+                case 0: {
+                    System.out.println("GOODBYE !!!");
+                    break;
+                }
+                default:{
+                    System.err.println("Nhập sai !!!");
+                }
             }
 
         }while(choice!=0);

@@ -15,19 +15,19 @@ public class Admissions {
             case 1: {
                 boolean k = true;
                 StudentBranchA studentBranchA = new StudentBranchA();
-                studentBranchA.inputStudentBranchAInfo();
+                studentBranchA.inputStudentBranchAInfo(studentList);
                 studentList.add(studentBranchA);
                 break;
             }
             case 2: {
                 StudentBranchB studentBranchB = new StudentBranchB();
-                studentBranchB.inputStudentBranchBInfo();
+                studentBranchB.inputStudentBranchBInfo(studentList);
                 studentList.add(studentBranchB);
                 break;
             }
             case 3: {
                 StudentBranchC studentBranchC = new StudentBranchC();
-                studentBranchC.inputStudentInfo();
+                studentBranchC.inputStudentBranchCInfo(studentList);
                 studentList.add(studentBranchC);
                 break;
             }
@@ -135,17 +135,17 @@ public class Admissions {
             Student studentSearch = studentList.get(search);
             if (studentSearch instanceof StudentBranchA) {
                 StudentBranchA studentBranchA = new StudentBranchA();
-                studentBranchA.inputStudentBranchAInfo();
+                studentBranchA.inputStudentBranchAInfo(studentList);
                 studentList.set(search, studentBranchA);
             }
             if (studentSearch instanceof StudentBranchB) {
                 StudentBranchB studentBranchB = new StudentBranchB();
-                studentBranchB.inputStudentBranchBInfo();
+                studentBranchB.inputStudentBranchBInfo(studentList);
                 studentList.set(search, studentBranchB);
             }
             if (studentSearch instanceof StudentBranchC) {
                 StudentBranchC studentBranchC = new StudentBranchC();
-                studentBranchC.inputStudentBranchCInfo();
+                studentBranchC.inputStudentBranchCInfo(studentList);
                 studentList.set(search, studentBranchC);
             }
         }

@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class Student {
@@ -49,11 +50,24 @@ public class Student {
     }
 
     // Nhap thong tin mot thi sinh
-    public void inputStudentInfo(){
+    public void inputStudentInfo(List<Student> studentList){
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập số báo danh : ");
-        id = sc.nextInt();
-        sc.nextLine();
+        while (true){
+            id = sc.nextInt();
+            sc.nextLine();
+            boolean isFind = false;
+            for(Student student : studentList){
+                if(student.getId()==id){
+                    isFind = true;
+                }
+            }
+            if(!isFind){
+                break;
+            }else {
+                System.err.println("Mã sinh viên đã tồn tại !");
+            }
+        }
         System.out.print("Nhập họ tên thí sinh : ");
         name = sc.nextLine();
         System.out.print("Nhập địa chỉ : ");

@@ -1,3 +1,4 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class StudentBranchA extends Student{
@@ -46,8 +47,8 @@ public class StudentBranchA extends Student{
     }
 
     // Nhap thong tin cua thi sinh khoi A
-    public void inputStudentBranchAInfo(){
-        inputStudentInfo();
+    public void inputStudentBranchAInfo(List<Student> studentList){
+        inputStudentInfo(studentList);
         Scanner sc = new Scanner(System.in);
         System.out.print("Nhập điểm thi môn Toán : ");
         mathScore = sc.nextDouble();
